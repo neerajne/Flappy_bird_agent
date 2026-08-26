@@ -3,18 +3,17 @@ import random
 
 
 class ReplayMemory:
-    #creating replay memory -  experience buffer
+
+    # create FIFO queue - experience replay
     def __init__(self, maxlen, seed=None):
         self.memory = deque([], maxlen=maxlen)
 
-    #appending experience in memory
-    def append(self, new_experience):
-        self.memory.append(new_experience)
+    def append(self, new_exp):
+        self.memory.append(new_exp)
 
-    # returning random  samples
     def sample(self, sample_size):
         return random.sample(self.memory, sample_size)
 
-    # calcualting length
+    # curr buffer size
     def __len__(self):
-     return len(self.memory)
+        return len(self.memory)
